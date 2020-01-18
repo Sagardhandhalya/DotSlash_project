@@ -29,7 +29,31 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 import Gate from './gate'
 Vue.prototype.$gate = new Gate(window.user)
- import router from './router'
+
+import router from './router'
+
+import { Form, HasError, AlertError } from 'vform'
+window.Form = Form
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+
+let Fire = new Vue()
+window.Fire = Fire
+
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+window.Toast = Toast
+
 const app = new Vue({
     el: '#app',
     router
