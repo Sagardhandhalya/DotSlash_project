@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Auth;
 use App\School;
+use App\Department;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -92,5 +94,42 @@ class SchoolController extends Controller
     {
         $school->delete();
         return ['message', 'School Deleted'];
+    }
+
+    public function createDepartment(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+        ]);
+        $data['school_id'] = Auth::user()->school->id;
+        return Department::create($data);
+    }
+
+    public function getDepartments()
+    {
+        $departments = Auth::user()->school->departments;
+        return ['departments' => $departments];
+    }
+
+    public function getTeachersByDepartment(Department $department)
+    {
+        $teachers = $department->teachers;
+        return ['teachers' => $teachers];
+    }
+
+    public function users()
+    {
+        $teachers = Auth::user()->school->teachers;
+        foreach ($teachers as $x) {
+            $department = $x->department;
+            $x->department = $department;
+        }
+        $students = Auth::user()->school->students;
+        foreach ($students as $z) {
+            $section = $z->section;
+            $section->class = $z->section->class;
+            $z->section = $section;
+        }
+        return ['teachers' => $teachers, 'students' => $students];
     }
 }

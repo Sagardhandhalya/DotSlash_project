@@ -66,11 +66,14 @@
     </div>
 </template>
 <script>
-import schoolmodal from './modals/SchoolModal'
-import UserModal from './modals/UserModal'
-import ClassModal from './modals/ClassModal'
+import schoolmodal from '../modals/SchoolModal'
+import UserModal from '../modals/UserModal'
+import ClassModal from '../modals/ClassModal'
+import DepartmentModal from '../modals/DepartmentModal'
+import ClassList from './ClassList'
+
 export default {
-    components: { schoolmodal, UserModal, ClassModal },
+    components: { schoolmodal, UserModal, ClassModal, DepartmentModal, ClassList },
     data() {
         return {
             schools: [],
@@ -90,6 +93,9 @@ export default {
                 school_id: '',
                 password: ''
             }),
+            departments: [],
+            schools: [],
+            sections: []
         }
     },
     methods: {

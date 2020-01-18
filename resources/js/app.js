@@ -54,6 +54,8 @@ const Toast = Swal.mixin({
 })
 window.Toast = Toast
 
+require('admin-lte')
+
 const app = new Vue({
     el: '#app',
     router
