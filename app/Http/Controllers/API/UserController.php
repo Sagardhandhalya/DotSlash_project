@@ -37,16 +37,46 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required',
-            'role' => 'required',
-            'gender' => 'required',
-            'school_id' => 'required'
-        ]);
-        $data['password'] = Hash::make($data['password']);
-        return User::create($data);
+        if(Auth::user()->role == 'master') {
+            $data = $request->validate([
+                'name' => 'required',
+                'email' => 'required|unique:users',
+                'password' => 'required',
+                'role' => 'required',
+                'gender' => 'required',
+                'school_id' => 'required'
+            ]);
+            $data['password'] = Hash::make($data['password']);
+            return User::create($data);
+        }
+        if(Auth::user()->role == 'admin') {
+            if($request->role == 'teacher') {
+                $data = $request->validate([
+                    'name' => 'required',
+                    'email' => 'required',
+                    'role' => 'required',
+                    'gender' => 'required',
+                    'department_id' => 'required',
+                    'password' => 'required'
+                ]);
+                $data['school_id'] = Auth::user()->school->id;
+                $data['password'] = Hash::make($data['password']);
+                return User::create($data);
+            } 
+            if($request->role == 'student') {
+                $data = $request->validate([
+                    'name' => 'required',
+                    'father_name' => 'required',
+                    'birthdate' => 'required',
+                    'address' => 'required',
+                    'section_id' => 'required',
+                    'email' => 'required',
+                    'role' => 'required',
+                    'gender' => 'required',
+                    'school_id' => 'required'
+                ]);
+            }
+        }
     }
 
     /**
@@ -69,18 +99,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if(Auth::user()->role == 'master') {
-            $data = $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'role' => 'required',
-                'gender' => 'required',
-                'school_id' => 'required'
-            ]);
-            $data['password'] = $user->password;
-            $user->update($data);
-            return ['message' => 'User Updated'];
-        }
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+            'gender' => 'required',
+            'school_id' => 'required'
+        ]);
+        $data['password'] = $user->password;
+        $user->update($data);
+        return ['message' => 'User Updated'];
     }
 
     /**

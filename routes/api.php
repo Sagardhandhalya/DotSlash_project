@@ -17,5 +17,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//  School
 Route::apiresource('/school', 'API\SchoolController');
+Route::post('adddepartment', 'API\SchoolController@createDepartment');
+Route::get('getdepartments', 'API\SchoolController@getDepartments');
+Route::get('getusers', 'API\SchoolController@users');
+Route::get('department-teacher/{department}', 'API\SchoolController@getTeachersByDepartment');
+
+//  User
 Route::apiresource('/user', 'API\UserController');
+
+
+//  Class
+Route::apiresource('myclass', 'API\MyclassController');
+Route::get('/getsections/{id}', 'API\MyclassController@section');
+
+//  Section
+Route::apiresource('section', 'API\SectionController');
+Route::get('getcourses/{section}', 'API\SectionController@sectionCourses');
+Route::get('getstudents/{section}', 'API\SectionController@sectionStudents');
+
+
+// Course
+Route::apiresource('course', 'API\CourseController');

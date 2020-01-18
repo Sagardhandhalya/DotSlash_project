@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'school_id', 'role', 'gender'
+        'name', 'email', 'password', 'school_id', 'role', 'gender', 'department_id', 'section_id',
     ];
 
     /**
@@ -37,4 +37,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function school()
+    {
+        return $this->belongsTo('App\School');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo('App\Section');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany('App\Course', 'teacher_id', 'id');
+    }
 }

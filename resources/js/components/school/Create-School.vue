@@ -53,8 +53,8 @@
                         <ClassList :departments="departments" />
                     </div>
                     <p class="font-weight-bold mt-3">Add Users</p>
-                    <UserModal userRole="student" :sections="sections" />
-                    <UserModal :departments="departments" :sections="sections" userRole="teacher" />
+                    <StudentModal userRole="student" :sections="sections" />
+                    <StudentModal :departments="departments" :sections="sections" userRole="teacher" />
                 </div>
                 <div class="card-footer">
 
@@ -71,9 +71,10 @@ import UserModal from '../modals/UserModal'
 import ClassModal from '../modals/ClassModal'
 import DepartmentModal from '../modals/DepartmentModal'
 import ClassList from './ClassList'
+import StudentModal from '../modals/StudentModal'
 
 export default {
-    components: { schoolmodal, UserModal, ClassModal, DepartmentModal, ClassList },
+    components: { schoolmodal, UserModal, ClassModal, DepartmentModal, ClassList, StudentModal },
     data() {
         return {
             schools: [],
@@ -130,9 +131,22 @@ export default {
             this.editMode = true
             this.school.fill(school)
             $('#schoolmodal').modal('show')
+        },
+        loadData() {
+            if(this.$gate.isAdmin()) {
+                axios.get('api/getdepartments')
+                .then((data) => {
+                    this.departments = data.data.departments
+                })
+                axios.get('api/section')
+                .then((data) => {
+                    this.sections = data.data.sections
+                })
+            }
         }
     },
     created() {
+        this.loadData()
         Fire.$on('getSchools', () => {
             this.getSchools()
         })
