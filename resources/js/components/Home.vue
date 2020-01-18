@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="$gate.isAdmin()">
+        <div v-if="!$gate.isMaster()">
             <div class="card">
                 <div class="card-body">
                     <h3>Welcome to {{school.name}}</h3>

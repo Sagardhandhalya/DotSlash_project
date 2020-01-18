@@ -1,6 +1,6 @@
 <template>
 <div class="d-inline">
-    <button type="button" class="btn btn-sm btn-success text-capitalize col-5 ml-1 float-left" @click="createUser">
+    <button type="button" class="btn btn-sm btn-success text-capitalize" @click="createUser">
         <i v-if="userRole == 'teacher'" class="fas fa-chalkboard-teacher"></i>
         <i v-if="userRole == 'student'" class="fas fa-user-graduate"></i>
         Add {{userRole}}
