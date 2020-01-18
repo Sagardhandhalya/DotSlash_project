@@ -27,6 +27,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Gate from './gate'
+Vue.prototype.$gate = new Gate(window.user)
+ import router from './router'
 const app = new Vue({
     el: '#app',
+    router
 });
