@@ -51,6 +51,7 @@
 </template>
 <script>
 export default {
+    
     props: {user: Object, eMode: Boolean},
     methods: {
         addUser() {

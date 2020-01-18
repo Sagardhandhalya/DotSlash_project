@@ -20,5 +20,15 @@ class UsersTableSeeder extends Seeder
             'role' => 'master',
             'school_id' => -1
         ]);
+
+        DB::table('users')->insert([
+            'id' => 2,
+            'name' => 'Admin',
+            'email' => 'admin@test.com',
+            'password' => bcrypt('admin'),
+            'gender' => 'Male',
+            'role' => 'admin',
+            'school_id' => 1
+        ]);
     }
 }

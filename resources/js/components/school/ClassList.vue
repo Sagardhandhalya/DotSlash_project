@@ -70,12 +70,12 @@
                                     <div class="form-row">
                                         <div class="col-5">
                                             <label for="name">Section Name</label>
-                                            <input type="text" id="name" class="form-control" :class="{ 'is-invalid': section.errors.has('name') }" v-model="section.name">
+                                            <input type="text" :id="myclass.id+'name'" class="form-control" :class="{ 'is-invalid': section.errors.has('name') }" v-model="section.name">
                                             <has-error class="font-weight-bold" :form="section" field="name"></has-error>
                                         </div>
                                         <div class="col-5">
                                             <label for="room">Room Number</label>
-                                            <input type="text" id="room" class="form-control" :class="{ 'is-invalid': section.errors.has('room') }" v-model="section.room">
+                                            <input type="text" :id="myclass.id+'room'" class="form-control" :class="{ 'is-invalid': section.errors.has('room') }" v-model="section.room">
                                             <has-error class="font-weight-bold" :form="section" field="room"></has-error>
                                         </div>
                                         <div class="col-2">
@@ -117,7 +117,7 @@ export default {
     },
     methods: {
         loadClass() {
-            axios.get('admin-data')
+            axios.get('/admin-data')
             .then((data) => {
                 this.classes = data.data.classes
             })
