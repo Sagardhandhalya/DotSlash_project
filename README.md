@@ -1,8 +1,6 @@
-# SMS
-## school managment System
+# SMS (school managment System)
 
-
-# School Management System (Laravel + VueJs)
+## School Management System (Laravel + VueJs)
 
 ## Project SetUp
 
@@ -21,22 +19,22 @@ cd <project-directory>
 ```
 save .env.example as .env
  ```
- ### step: 3
+ ### step: 4
  
 ```
 php artisan key:generate (To Get The App-ID)
 ```
-### step: 3
+### step: 5
 
 ```
 composer install
 ```
-### step: 3
+### step: 6
 
 ```
 npm install
 ```
-### step: 3
+### step: 7
 
 ```
 npm run dev (npm run watch for continuous assets compiling)
