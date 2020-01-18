@@ -121,4 +121,26 @@ class UserController extends Controller
     {
         //
     }
+
+    public function teacherCourses(User $user)
+    {
+        $courses = $user->courses;
+        foreach ($courses as $x) {
+            $section = $x->section;
+            $x->section = $section;
+            $x->class = $section->class->number;
+        }
+        return ['courses' => $courses];
+    }
+
+    public function studentCourses()
+    {
+        $courses = Auth::user()->section->courses;
+        foreach ($courses as $x) {
+            $teacher = $x->teacher;
+            $x->teacher = $teacher;
+        }
+        $section = Auth::user()->section;
+        return ['courses' => $courses, 'section' => $section, 'class' => $section->class];
+    }
 }

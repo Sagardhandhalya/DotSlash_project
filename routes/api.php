@@ -26,7 +26,8 @@ Route::get('department-teacher/{department}', 'API\SchoolController@getTeachersB
 
 //  User
 Route::apiresource('/user', 'API\UserController');
-
+Route::get('teacher-courses/{user}', 'API\UserController@teacherCourses');
+Route::get('student-courses', 'API\UserController@studentCourses');
 
 //  Class
 Route::apiresource('myclass', 'API\MyclassController');
