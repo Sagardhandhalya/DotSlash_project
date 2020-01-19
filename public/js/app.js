@@ -2079,11 +2079,77 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       school_id: window.user.school_id,
-      school: {}
+      school: {},
+      classes: [],
+      sections: [],
+      teachers: [],
+      students: []
     };
   },
   methods: {
@@ -2095,10 +2161,20 @@ __webpack_require__.r(__webpack_exports__);
           _this.school = data.data.school;
         });
       }
+    },
+    getData: function getData() {
+      var _this2 = this;
+
+      axios.get('api/analysis/' + this.school_id).then(function (data) {
+        console.log(data);
+        _this2.classes = data.data.classes;
+        _this2.teachers = data.data.teachers, _this2.students = data.data.students;
+      });
     }
   },
   created: function created() {
     this.getSchool();
+    this.getData();
   }
 });
 
@@ -43223,12 +43299,133 @@ var render = function() {
                 "\n                Your presence and cooperation will help us to improve the education system of our\n                organization.\n            "
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mt-5" }, [
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-info" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.teachers.length))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Teachers")])
+                ]),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-success" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.students.length))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Students")])
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-6" }, [
+              _c("div", { staticClass: "small-box bg-warning" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.classes.length))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Classes")])
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5)
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(6)
           ])
         ])
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user-tie" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("More info "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user-graduate" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("More info "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-chalkboard-teacher" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("More info "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-6" }, [
+      _c("div", { staticClass: "small-box bg-danger" }, [
+        _c("div", { staticClass: "inner" }, [
+          _c("h3", [_vm._v("4")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Section")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-bars" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+          _vm._v("More info "),
+          _c("i", { staticClass: "fas fa-arrow-circle-right" })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -43466,11 +43663,11 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "btn btn-sm btn-dark",
-                            attrs: { to: "/attendance/" + course.section_id }
+                            attrs: { to: "/livelecture/" + course.id }
                           },
                           [
-                            _c("i", { staticClass: "fas fa-pencil-alt" }),
-                            _vm._v(" Take Attendance")
+                            _c("i", { staticClass: "fas fa-headset" }),
+                            _vm._v(" Go Live")
                           ]
                         )
                       ],
@@ -43866,29 +44063,29 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "file" } }, [
-                    _vm._v("Upload Material")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    attrs: { type: "file", id: "file" },
-                    on: { change: _vm.setFile }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
                 _c(
-                  "button",
+                  "form",
                   {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.addMaterial }
+                    attrs: {
+                      action: "/api/uploadmaterial/" + _vm.cid,
+                      method: "POST",
+                      enctype: "multipart/form-data"
+                    }
                   },
-                  [_vm._v("Close")]
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ]
                 )
               ])
             ])
@@ -43936,6 +44133,16 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: { type: "text", placeholder: "Message" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "file" } }, [_vm._v("Upload Material")]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "file", id: "file" } })
     ])
   }
 ]
@@ -63532,7 +63739,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/changepassword',
     component: __webpack_require__(/*! ./components/ChangePassword */ "./resources/js/components/ChangePassword.vue")["default"]
-  }]
+  } // { path: '/livelecture', component: require('./components/course/LiveLecture').default }
+  ]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

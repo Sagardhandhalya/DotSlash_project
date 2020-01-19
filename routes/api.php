@@ -23,6 +23,7 @@ Route::post('adddepartment', 'API\SchoolController@createDepartment');
 Route::get('getdepartments', 'API\SchoolController@getDepartments');
 Route::get('getusers', 'API\SchoolController@users');
 Route::get('department-teacher/{department}', 'API\SchoolController@getTeachersByDepartment');
+Route::get('analysis/{school}', 'API\SchoolController@numberData');
 
 //  User
 Route::apiresource('/user', 'API\UserController');
