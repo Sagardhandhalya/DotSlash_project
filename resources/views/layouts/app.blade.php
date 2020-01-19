@@ -44,11 +44,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                         <li class="nav-item">
                             <a href="#" class="nav-link disabled"><img src="/image/user.png" alt="" class="rounded-circle" style="width:20px"></a>
