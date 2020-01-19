@@ -132,4 +132,12 @@ class SchoolController extends Controller
         }
         return ['teachers' => $teachers, 'students' => $students];
     }
+
+    public function numberData(School $school)
+    {
+        $myclass = $school->classes;
+        $teacher = $school->teachers;
+        $students = $school->students;
+        return ['classes' => $myclass,'teachers' => $teacher, 'students' => $students];
+    }
 }

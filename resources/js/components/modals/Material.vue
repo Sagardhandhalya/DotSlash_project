@@ -7,19 +7,19 @@
                     <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                    </button>
+                </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Message">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Upload Material</label>
-                      <input type="file" id="file" @change="setFile">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" @click="addMaterial">Close</button>
+                    <form :action="'/api/uploadmaterial/'+cid" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Message">
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Upload Material</label>
+                            <input type="file" id="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    </form>
                 </div>
                 </div>
             </div>

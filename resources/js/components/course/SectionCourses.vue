@@ -34,7 +34,7 @@
                         <td>{{$gate.isTeacher() ? course.section.room : section.room}}</td>
                         <td v-if="$gate.isStudent()">{{course.teacher.name}}</td>
                         <td v-if="$gate.isAdminOrTeacher()">
-                            <router-link :to="'/attendance/'+course.section_id" class="btn btn-sm btn-dark"><i class="fas fa-pencil-alt"></i> Take Attendance</router-link>
+                            <router-link :to="'/livelecture/'+course.id" class="btn btn-sm btn-dark"><i class="fas fa-headset"></i> Go Live</router-link>
                         </td>
                         <td v-if="$gate.isAdminOrTeacher()">
                             <router-link :to="'/course/'+course.id" class="btn btn-sm btn-outline-primary font-weight-bold"><i class="fas fa-envelope-open-text"></i> Course Material</router-link>

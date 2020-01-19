@@ -86,6 +86,7 @@ class CourseController extends Controller
 
     public function upLoadMaterial(Request $request, Course $course)
     {
+        return 1;
         $filenameWithExt = $request->file('name')->getClientOriginalName();
         // Get just filename
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
