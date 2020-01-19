@@ -6,6 +6,7 @@ use App\Course;
 use App\Section;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class CourseController extends Controller
@@ -57,7 +58,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return $course->materials;
     }
 
     /**
@@ -80,6 +81,21 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        
+    }
+
+    public function upLoadMaterial(Request $request, Course $course)
+    {
+        $filenameWithExt = $request->file('name')->getClientOriginalName();
+        // Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // Get just ext
+        $extension = $request->file('name')->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        // Upload Image
+        $path = $request->file('file')->storeAs('public/images', $fileNameToStore);        
+        $request->merge(['name' => $name]);
+        return $course;
     }
 }

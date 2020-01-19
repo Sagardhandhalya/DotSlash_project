@@ -12,6 +12,8 @@ const router = new Router({
         { path: '/users', component: require('./components/school/Users').default},
         { path: '/students/:id', component:require('./components/users/SectionStudents').default },
         { path: '/courses/:id', component: require('./components/course/SectionCourses').default},
+        { path: '/course/:id', component: require('./components/course/CourseMaterial').default},
+        { path: '/changepassword', component: require('./components/ChangePassword').default }
     ]
 })
 

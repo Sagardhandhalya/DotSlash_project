@@ -28,6 +28,7 @@ Route::get('department-teacher/{department}', 'API\SchoolController@getTeachersB
 Route::apiresource('/user', 'API\UserController');
 Route::get('teacher-courses/{user}', 'API\UserController@teacherCourses');
 Route::get('student-courses', 'API\UserController@studentCourses');
+Route::post('changepassword', 'API\UserController@changePassword');
 
 //  Class
 Route::apiresource('myclass', 'API\MyclassController');
@@ -41,3 +42,4 @@ Route::get('getstudents/{section}', 'API\SectionController@sectionStudents');
 
 // Course
 Route::apiresource('course', 'API\CourseController');
+Route::post('/uploadmaterial/{course}', 'API\CourseController@upLoadMaterial');

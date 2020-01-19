@@ -37,7 +37,7 @@
                             <router-link :to="'/attendance/'+course.section_id" class="btn btn-sm btn-dark"><i class="fas fa-pencil-alt"></i> Take Attendance</router-link>
                         </td>
                         <td v-if="$gate.isAdminOrTeacher()">
-                            <router-link to="#" class="btn btn-sm btn-outline-primary font-weight-bold"><i class="fas fa-envelope-open-text"></i> Message Students</router-link>
+                            <router-link :to="'/course/'+course.id" class="btn btn-sm btn-outline-primary font-weight-bold"><i class="fas fa-envelope-open-text"></i> Course Material</router-link>
                         </td>
                         <td v-if="$gate.isTeacher()">
                             <router-link to="#" class="btn btn-sm btn-block btn-success"><i class="fas fa-chart-bar"></i> Submit Grade</router-link>

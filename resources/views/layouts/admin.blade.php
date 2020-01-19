@@ -112,29 +112,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
             </li>
             @endif
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-star-of-life"></i>
-              <p>
-                Starter Pages
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
           @if (Auth::user()->role == 'admin')
           <li class="nav-item">
             <router-link to="/create-school" class="nav-link" active-class="active" exact>
@@ -151,6 +128,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           @endif
+          <li class="nav-item">
+            <router-link to="/changepassword" class="nav-link" active-class="active" exact>
+                <i class="nav-icon fas fa-key"></i>
+                <p>Change Password</p>
+            </router-link>
+          </li>
         </ul>
       </nav>
     </div>
