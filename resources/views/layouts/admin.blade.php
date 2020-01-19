@@ -128,6 +128,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           @endif
+          <li class="nav-item">
+            <router-link to="/changepassword" class="nav-link" active-class="active" exact>
+                <i class="nav-icon fas fa-key"></i>
+                <p>Change Password</p>
+            </router-link>
+          </li>
         </ul>
       </nav>
     </div>

@@ -143,4 +143,16 @@ class UserController extends Controller
         $section = Auth::user()->section;
         return ['courses' => $courses, 'section' => $section, 'class' => $section->class];
     }
+    
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'newpassword' => 'required',
+        ]);
+        $user = Auth::user();
+        $user->password = Hash::make($request->newpassword);
+        $user->save();
+        return view('home');
+    }
 }
