@@ -11,65 +11,55 @@
 
         <!-- Styles -->
         <style>
-            .bck {
-                background-image: url('./school.png');
-                background-color: rgba(0, 0, 0, 0.5);
-            }
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+            body, html {
+            height: 100%;
             }
 
-            .full-height {
-                height: 100vh;
+            * {
+            box-sizing: border-box;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+            .bg-image {
+            /* The image used */
+            background-image: url("./school.png");
+
+            /* Add the blur effect */
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             }
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            /* Position text in the middle of the page/image */
+            .bg-text {
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid gray;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
             }
         </style>
     </head>
-    <body class="bck">
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a class="btn btn-success" href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                </div>
-            @endif
+    <body>
+        <div class="bg-image"></div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    <h1 class="display-1 text-dark">School Management System</h1>
-                </div>
-            </div>
+        <div class="bg-text">
+        <h1>School Management System</h1>
+        <p><a href="/login" class="btn btn-success col-4">Login</a></p>
         </div>
     </body>
 </html>
